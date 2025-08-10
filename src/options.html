@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shiftly Drive Settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      line-height: 1.6;
+      background: #f8f9fa;
+    }
+
+    .container {
+      background: white;
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #202124;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+    }
+
+    .subtitle {
+      color: #5f6368;
+      margin-bottom: 32px;
+    }
+
+    .section {
+      margin-bottom: 32px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+    }
+
+    .section h2 {
+      margin: 0 0 16px 0;
+      color: #202124;
+      font-size: 18px;
+    }
+
+    .auth-status {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .auth-status.authenticated {
+      background: #e8f5e8;
+      color: #137333;
+      border: 1px solid #c6f6d5;
+    }
+
+    .auth-status.not-authenticated {
+      background: #fce8e6;
+      color: #d93025;
+      border: 1px solid #f6c5c1;
+    }
+
+    .status-icon {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 12px;
+      transition: background 0.2s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background: #1557b0;
+    }
+
+    button:disabled {
+      background: #dadce0;
+      cursor: not-allowed;
+    }
+
+    button.secondary {
+      background: white;
+      color: #1a73e8;
+      border: 1px solid #dadce0;
+    }
+
+    button.secondary:hover:not(:disabled) {
+      background: #f8f9fa;
+    }
+
+    button.danger {
+      background: #d93025;
+    }
+
+    button.danger:hover:not(:disabled) {
+      background: #b52d20;
+    }
+
+    .info-box {
+      background: #f1f5f9;
+      border: 1px solid #c8d6e5;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .info-box h3 {
+      margin: 0 0 8px 0;
+      color: #1a73e8;
+    }
+
+    .info-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .version-info {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 12px;
+      color: #5f6368;
+      text-align: center;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #dadce0;
+      border-top: 2px solid #1a73e8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <svg class="logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4285f4;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#34a853;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="24" height="24" rx="4" fill="url(#grad1)"/>
+        <g>
+          <path d="M12 10V16M12 10L10 12M12 10L14 12M12.0627 6.06274L11.9373 5.93726C11.5914 5.59135 11.4184 5.4184 11.2166 5.29472C11.0376 5.18506 10.8425 5.10425 10.6385 5.05526C10.4083 5 10.1637 5 9.67452 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V10.2C21 9.0799 21 8.51984 20.782 8.09202C20.5903 7.71569 20.2843 7.40973 19.908 7.21799C19.4802 7 18.9201 7 17.8 7H14.3255C13.8363 7 13.5917 7 13.3615 6.94474C13.1575 6.89575 12.9624 6.81494 12.7834 6.70528C12.5816 6.5816 12.4086 6.40865 12.0627 6.06274Z" fill="transparent" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+      </svg>
+      Shiftly Drive Settings
+    </h1>
+    <p class="subtitle">Settings for the Google Drive folder opener extension</p>
+
+    <div class="section">
+      <h2>Authentication Status</h2>
+      <div id="authStatus" class="auth-status not-authenticated">
+        <span class="status-icon">❌</span>
+        Not authenticated
+      </div>
+
+      <button id="authBtn">Authenticate with Google Account</button>
+      <button id="signOutBtn" class="danger hidden">Sign Out</button>
+
+      <div class="info-box">
+        <h3>About Authentication</h3>
+        <p>
+          This extension uses the Google Drive API to retrieve file information.
+          Authentication grants read-only access to your Google Drive.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>How to Use</h2>
+      <div class="info-box">
+        <h3>Basic Usage</h3>
+        <p>
+          1. Open a file in Google Drive or Google Docs<br>
+          2. Click the Shiftly Drive icon in the browser toolbar<br>
+          3. Click on the displayed parent folder links to navigate
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Cache and Data</h2>
+      <button id="clearCacheBtn" class="secondary">Clear Cache</button>
+      <p style="font-size: 14px; color: #5f6368; margin-top: 8px;">
+        Folder information is cached for 5 minutes to reduce API requests.
+      </p>
+    </div>
+
+    <div class="version-info">
+      <p>Shiftly Drive v0.0.1</p>
+      <p>Extension for improved Google Drive workflow efficiency</p>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

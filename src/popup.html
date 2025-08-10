@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shiftly Drive</title>
+  <style>
+    body {
+      width: 350px;
+      min-height: 200px;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .logo {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .title {
+      font-weight: 600;
+      color: #202124;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: #5f6368;
+    }
+
+    .error {
+      background: #fce8e6;
+      border: 1px solid #d93025;
+      border-radius: 4px;
+      padding: 12px;
+      color: #d93025;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .file-info {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    .file-name {
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 4px;
+      word-break: break-word;
+    }
+
+    .file-url {
+      font-size: 12px;
+      color: #5f6368;
+    }
+
+    .folders-section h3 {
+      margin: 0 0 8px 0;
+      font-size: 13px;
+      font-weight: 500;
+      color: #202124;
+    }
+
+    .folder-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .folder-item {
+      margin-bottom: 8px;
+    }
+
+    .folder-link {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #1a73e8;
+      transition: all 0.2s ease;
+    }
+
+    .folder-link:hover {
+      background: #f1f5f9;
+      border-color: #1a73e8;
+    }
+
+    .folder-icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+
+    .folder-name {
+      flex: 1;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .no-folders {
+      text-align: center;
+      padding: 20px;
+      color: #5f6368;
+      font-size: 13px;
+    }
+
+    .auth-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .auth-button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .auth-button:hover {
+      background: #1557b0;
+    }
+
+    .auth-button:disabled {
+      background: #dadce0;
+      cursor: not-allowed;
+    }
+
+    .refresh-button {
+      background: transparent;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #5f6368;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .refresh-button:hover {
+      background: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">SD</div>
+    <div class="title">Shiftly Drive</div>
+    <button class="refresh-button" id="refreshBtn" title="Refresh">↻</button>
+  </div>
+
+  <div id="content">
+    <div class="loading" id="loadingMsg">
+      Loading...
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
